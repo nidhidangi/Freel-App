@@ -337,7 +337,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <outlet property="delegate" destination="icn-zi-c3l" id="DZw-Cb-nKS"/>
+                                            <outlet property="delegate" destination="icn-zi-c3l" id="w8S-5S-Fuf"/>
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="pEZ-gr-cp3">
@@ -489,6 +489,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="Dropdowncalender:" destination="icn-zi-c3l" eventType="touchUpInside" id="Sfy-E7-9Wy"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="u12-l9-1mT">
                                         <constraints>
@@ -598,6 +601,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="WW7-Mc-Uvg"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="displayDate" destination="Mwg-ph-OMQ" id="buY-M2-ChX"/>
                         <outlet property="textFiled" destination="fnS-mx-cCN" id="akJ-kR-WT5"/>
                     </connections>
                 </viewController>
@@ -3394,6 +3398,8 @@
         <class className="SignUpViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
             <relationships>
+                <relationship kind="action" name="Dropdowncalender:"/>
+                <relationship kind="outlet" name="displayDate" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="textFiled" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -3404,15 +3410,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hu1-rU-1lg"/>
-        <segue reference="1r1-ZN-iWI"/>
-        <segue reference="Asw-C1-bmY"/>
         <segue reference="sDv-WQ-Xfp"/>
+        <segue reference="Asw-C1-bmY"/>
+        <segue reference="1r1-ZN-iWI"/>
         <segue reference="f66-Ir-pWp"/>
         <segue reference="X6A-o5-6eU"/>
         <segue reference="wzr-80-uDu"/>
         <segue reference="lZs-2d-3SN"/>
         <segue reference="Gve-WL-5iM"/>
-        <segue reference="U0b-Ka-E5x"/>
+        <segue reference="DbP-Mp-lb4"/>
+        <segue reference="hu1-rU-1lg"/>
     </inferredMetricsTieBreakers>
 </document>

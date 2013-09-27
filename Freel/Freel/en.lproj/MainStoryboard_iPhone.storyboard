@@ -227,7 +227,7 @@
         <scene sceneID="UxD-xe-rsT">
             <objects>
                 <viewController id="wa4-St-hgb" customClass="SignUpViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lBU-N8-Kbl">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="lBU-N8-Kbl">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -485,6 +485,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="Dropdowncalender:" destination="wa4-St-hgb" eventType="touchUpInside" id="UTW-cv-SZa"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-gc-Gfc">
                                         <constraints>
@@ -591,6 +594,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="xdK-2o-kOr"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="displayDate" destination="rcj-h2-1mW" id="7HM-zj-V4Y"/>
                         <outlet property="textFiled" destination="UFB-Kc-S6U" id="m4y-Rk-9L7"/>
                     </connections>
                 </viewController>

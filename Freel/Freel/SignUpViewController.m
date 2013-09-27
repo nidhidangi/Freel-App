@@ -7,6 +7,10 @@
 //
 
 #import "SignUpViewController.h"
+#import "PopupDatePicker.h"
+#import "PopupDatePickerDelegate.h"
+#import "Constants.h"
+
 
 @interface SignUpViewController ()<UITextFieldDelegate>
 
@@ -15,7 +19,9 @@
 
 
 @implementation SignUpViewController
+@synthesize popupDatePicker = _popupDatePicker;
 
+UIDatePicker *picker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,8 +37,69 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _popupDatePicker = [[PopupDatePicker alloc] init];
+    self.popupDatePicker.delegate = self;
+
 	// Do any additional setup after loading the view.
 }
+
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *animationDuration = [defaults objectForKey:kAnimationDuration];
+    NSNumber *animationDelay = [defaults objectForKey:kAnimationDelay];
+    
+    self.popupDatePicker.animationDuration = [animationDuration floatValue];
+    self.popupDatePicker.animationDelay = [animationDelay floatValue];
+}
+
+#pragma mark PopupDatePicker delegate methods
+
+- (void) popupDatePickerWillShow: (PopupDatePicker *) datePicker animated: (BOOL) animated
+{
+    NSLog(@"will show");
+}
+
+- (void) popupDatePickerDidShow:(PopupDatePicker *) datePicker animated :(BOOL)animated
+{
+    NSNumber *clearDateOnShow = [[NSUserDefaults standardUserDefaults] objectForKey:kClearDateOnShow];
+    if ([clearDateOnShow boolValue] == YES)
+    {
+        self.displayDate.text=nil;
+        //self.dateLabel.text = nil;
+    }
+}
+
+- (void) popupDatePickerWillHide:(PopupDatePicker *) datePicker animated: (BOOL) animated
+{
+    NSLog(@"will hide");
+}
+
+- (void) popupDatePickerDidHide: (PopupDatePicker *) datePicker animated: (BOOL) animated
+{
+    NSNumber *showDateOnHide = [[NSUserDefaults standardUserDefaults] objectForKey:kShowDateOnHide];
+    
+    if ([showDateOnHide boolValue] == YES)
+    {
+        //self.dateLabel.text = [datePicker.date description];
+        self.displayDate.text=[datePicker.date description];
+    }
+}
+
+- (void) popupDatePicker: (PopupDatePicker *) datePicker didSelectDate:(NSDate *)date
+{
+    NSNumber *showDateOnHide = [[NSUserDefaults standardUserDefaults] objectForKey:kShowDateOnHide];
+    
+    if ([showDateOnHide boolValue] == NO)
+    {
+       NSDateFormatter *fmtDate = [[NSDateFormatter alloc] init];
+        [fmtDate setDateFormat:@"yyyy/MM/dd" ];
+        self.displayDate.text = [fmtDate stringFromDate:date];
+        
+    }
+}
+
 
 
 //*************************************************************************************************************************************************************************//
@@ -58,5 +125,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)Dropdowncalender:(id)sender
+{
+   
+    [self.popupDatePicker showFromView:self.view];
+
+}
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+    
+    
+}
 
 @end
