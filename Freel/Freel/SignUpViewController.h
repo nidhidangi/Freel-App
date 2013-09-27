@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SignUpViewController : UIViewController <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *textFiled;
 
 @end
